@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h> // Include ctype.h for tolower function
 
 #define MAX_LENGTH 100
 
@@ -8,18 +9,34 @@ bool is_palindrome(char string[]);
 
 int main(void)
 {
-  char string4[MAX_LENGTH];
-  printf("Enter the string: ");
-  fgets(string4, MAX_LENGTH, stdin); // Read string from user input
+    char string4[MAX_LENGTH];
+    printf("Enter the string: ");
+    fgets(string4, MAX_LENGTH, stdin); // Read string from user input
 
-  // Remove newline character from input string
-  if ((strlen(string4) > 0) && (string4[strlen(string4) - 1] == '\n'))
-    string4[strlen(string4) - 1] = '\0';
+    // Remove newline character if present
+    if ((strlen(string4) > 0) && (string4[strlen(string4) - 1] == '\n'))
+        string4[strlen(string4) - 1] = '\0';
 
-  if (is_palindrome(string4))
-    printf("%s\n- is a palindrome\n", string4);
-  else
-    printf("%s\n- is not a palindrome\n", string4);
+    // Convert string to lowercase
+    for (int i = 0; string4[i]; i++)
+        string4[i] = tolower(string4[i]);
 
-  return 0;
+    if (is_palindrome(string4))
+        printf("%s\n- is a palindrome\n", string4);
+    else
+        printf("%s\n- is not a palindrome\n", string4);
+
+    return 0;
+}
+
+bool is_palindrome(char string[])
+{
+    int len = strlen(string);
+    int middle = len / 2;
+
+    for (int i = 0; i < middle; i++)
+        if (string[i] != string[len - i - 1])
+            return false;
+
+    return true;
 }
