@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+#define MAX_LENGTH 100
+
+bool is_palindrome(char string[]);
+
+int main(void)
+{
+  char string4[MAX_LENGTH];
+  printf("Enter the string: ");
+  fgets(string4, MAX_LENGTH, stdin); // Read string from user input
+
+  // Remove newline character from input string
+  if ((strlen(string4) > 0) && (string4[strlen(string4) - 1] == '\n'))
+    string4[strlen(string4) - 1] = '\0';
+
+  if (is_palindrome(string4))
+    printf("%s\n- is a palindrome\n", string4);
+  else
+    printf("%s\n- is not a palindrome\n", string4);
+
+  return 0;
+}
