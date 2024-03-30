@@ -1,7 +1,9 @@
+//palindrome_sequence: author-Ananya Vinod
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <ctype.h> // Include ctype.h for tolower function
+#include <ctype.h> 
 
 #define MAX_LENGTH 100
 
