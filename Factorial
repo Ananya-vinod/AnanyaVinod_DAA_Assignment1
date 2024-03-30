@@ -1,0 +1,27 @@
+//factorial calculation-iterative approach    author:Ananya Vinod
+
+#include <stdio.h>
+
+unsigned int factorial(int n) {
+    unsigned int result = 1;
+    if (n < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+        return 0;
+    }
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int n;
+    printf("Enter an unsigned integer: ");
+    scanf("%d", &n);
+    
+    printf("Factorial of %d is: %d\n", n, factorial(n));
+    
+    return 0;
+}
+
+
