@@ -1,0 +1,44 @@
+//checking uniqueness of elements within an array    author:Ananya Vinod
+
+
+#include<stdio.h>
+
+void uniqueness(int arr[], int size)
+{
+    int i, j;
+    for (i = 0; i < size; i++)
+    {
+        for (j = i + 1; j < size; j++)
+        {
+            if (arr[i] == arr[j]) {
+                printf("%d is repeated-the array does not unique elements.\n", arr[i]);
+                return; // No need to continue checking once a duplicate is found
+            }
+        }
+    }
+    printf("There is uniqueness among the elements.\n");
+}
+
+int main()
+{   
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    int *arr = (int*)malloc(n * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("Enter the array (%d elements):\n", n);
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    uniqueness(arr, n);
+
+    free(arr); // Free dynamically allocated memory
+    return 0;
+}
